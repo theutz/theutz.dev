@@ -10,10 +10,21 @@
     "@mdx-js/react": "^1.5.1",
     "@theme-ui/components": "^0.2.45",
     "babel-plugin-emotion": "^10.0.21",
+    "image-trace-loader": "^0.1.0",
+    "imagemin-gifsicle": "^6.0.1",
+    "imagemin-mozjpeg": "^8.0.0",
+    "imagemin-optipng": "^7.1.0",
+    "imagemin-svgo": "^7.0.0",
+    "lqip-loader": "^2.2.0",
     "next": "^9.1.1",
+    "polished": "^3.4.1",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
-    "theme-ui": "^0.2.44"
+    "react-pose": "^4.0.9",
+    "responsive-loader": "^1.2.0",
+    "sharp": "^0.23.1",
+    "theme-ui": "^0.2.44",
+    "webp-loader": "^0.5.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.2.0",
@@ -21,6 +32,8 @@
     "@types/react": "^16.9.9",
     "@types/theme-ui": "^0.2.3",
     "husky": "^3.0.9",
+    "next-compose-plugins": "^2.2.0",
+    "next-optimized-images": "^2.5.3",
     "prettier": "^1.18.2",
     "pretty-quick": "^2.0.0",
     "typescript": "^3.6.4"
