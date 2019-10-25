@@ -15,7 +15,10 @@ const IndexPage: FC<Props> = () => {
 
   return (
     <>
-      <Head title="Home" onBgImageFadeStart={() => setPose('end')} />
+      <Head
+        title="Michael Utz | Front-End Developer"
+        onBgImageFadeStart={() => setPose('end')}
+      />
       <Flex
         sx={{
           flexDirection: 'column',
