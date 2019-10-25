@@ -9,6 +9,9 @@ const GlobalStyles: FC<{}> = () => (
       html: {
         backgroundColor: theme.colors.background,
       },
+      body: {
+        margin: 0,
+      },
     })}
   />
 )

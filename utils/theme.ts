@@ -7,14 +7,23 @@ type Variants = {
   }
 }
 
+const colors = {
+  text: '#F1E8D8',
+  background: '#1D141E',
+  primary: '#33e',
+}
+
 const theme: Theme & Variants = {
+  colors,
   fonts: {
     body: 'system-ui, sans-serif',
     heading: '"Avenir Next", sans-serif',
     monospace: 'Menlo, monospace',
     display: '"Amatic SC", sans-serif',
   },
+  breakpoints: [480, 736, 980, 1280, 1690].map((x) => `${x}px`),
   fontSizes: Array.from({ length: 10 }, (_, i) => modularScale(i)),
+  shadows: [`0 0 30px ${colors.background}`],
   zIndices: {
     '-5': -(10 ** 5),
     '-4': -(10 ** 4),
@@ -33,16 +42,11 @@ const theme: Theme & Variants = {
     heading: 700,
     bold: 700,
   },
-  colors: {
-    text: '#F1E8D8',
-    background: '#1D141E',
-    primary: '#33e',
-  },
   text: {
     display: {
       fontFamily: 'display',
       color: 'text',
-      textShadow: ({ colors }: any) => `0 0 10px ${colors.background}`,
+      textShadow: 0,
     },
   },
 }

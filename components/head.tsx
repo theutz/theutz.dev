@@ -42,10 +42,6 @@ const Head: FC<Props> = ({
       <meta property="og:image" content={ogImage} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-      <link
-        href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap"
-        rel="stylesheet"
-      />
     </NextHead>
     <GlobalStyles />
     <BackgroundImage

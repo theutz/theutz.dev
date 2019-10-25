@@ -47,7 +47,7 @@ const BackgroundImage: FC<Props> = ({
   const fullscreenImgStyle = {
     ...cover(),
     zIndex: -5,
-    background: `no-repeat center center`,
+    background: 'no-repeat center right',
     backgroundSize: 'cover',
   }
 
