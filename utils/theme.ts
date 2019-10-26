@@ -3,6 +3,7 @@ import { Theme } from 'theme-ui'
 
 type Variants = {
   text: {
+    heading: {}
     display: {}
   }
 }
@@ -16,9 +17,9 @@ const colors = {
 const theme: Theme & Variants = {
   colors,
   fonts: {
-    body: 'system-ui, sans-serif',
-    heading: '"Avenir Next", sans-serif',
-    monospace: 'Menlo, monospace',
+    body: '"Ubuntu Mono", monospace',
+    heading: '"Ubuntu Mono", monospace',
+    monospace: '"Ubuntu Mono", monospace',
     display: '"Amatic SC", sans-serif',
   },
   breakpoints: [480, 736, 980, 1280, 1690].map((x) => `${x}px`),
@@ -43,6 +44,10 @@ const theme: Theme & Variants = {
     bold: 700,
   },
   text: {
+    heading: {
+      fontFamily: 'heading',
+      color: 'text',
+    },
     display: {
       fontFamily: 'display',
       color: 'text',

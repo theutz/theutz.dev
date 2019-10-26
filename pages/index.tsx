@@ -50,6 +50,18 @@ const IndexPage: FC<Props> = () => {
         >
           Michael Utz
         </PosedHeading>
+        <PosedHeading
+          sx={{
+            ...makeBlurIn().stop,
+            fontSize: [1, 1, 2, 3],
+            fontWeight: 'normal',
+            textShadow: 0,
+            mt: [1, 2],
+          }}
+          pose={fadePose}
+        >
+          Front-end Developer
+        </PosedHeading>
         <PosedBox pose={glowPose} sx={{ mt: 4 }}>
           <DownIcon sx={{ color: 'text' }} />
         </PosedBox>
