@@ -3,14 +3,15 @@ import { Theme } from 'theme-ui'
 
 type Variants = {
   text: {
+    body: {}
     heading: {}
     display: {}
   }
 }
 
 const colors = {
-  text: '#F1E8D8',
-  background: '#1D141E',
+  background: '#F3EADA',
+  text: '#1D141E',
   primary: '#33e',
 }
 
@@ -44,6 +45,10 @@ const theme: Theme & Variants = {
     bold: 700,
   },
   text: {
+    body: {
+      fontFamily: 'body',
+      color: 'text',
+    },
     heading: {
       fontFamily: 'heading',
       color: 'text',
