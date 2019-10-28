@@ -10,6 +10,7 @@ import {
 } from 'react'
 import { cover } from 'polished'
 import posed from 'react-pose'
+import { motion } from 'framer-motion'
 
 type Props = {
   src?: string

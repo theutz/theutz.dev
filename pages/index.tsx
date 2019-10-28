@@ -4,22 +4,22 @@ import Head from '../components/head'
 import { jsx, useThemeUI } from 'theme-ui'
 import { Flex, Image, Heading, Box, Text, Grid } from '@theme-ui/components'
 import posed from 'react-pose'
+import { motion, useAnimation } from 'framer-motion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faChevronDoubleDown,
   faUsersCrown,
-  faBrowser,
   faPhoneLaptop,
-  faStoreAlt,
   faStore,
 } from '@fortawesome/pro-duotone-svg-icons'
+import { useBlur } from '../hooks/useBlur'
 const profilePic = require('../images/profile-pic.jpg?sizes[]=200,sizes[]=400')
 
 type Props = {}
 
 const IndexPage: FC<Props> = () => {
-  const [fadePose, setFadePose] = useState('stop')
-  const [glowPose, setGlowPose] = useState('stop')
+  const blur = useBlur()
+  const [glowPose, setGlowPose] = useState<'stop' | 'go'>('stop')
   const { theme } = useThemeUI()
   const bp = theme.breakpoints as string[]
 
@@ -27,7 +27,7 @@ const IndexPage: FC<Props> = () => {
     <>
       <Head
         title="Michael Utz | Front-End Developer"
-        onBgImageFadeStart={() => setFadePose('go')}
+        onBgImageFadeStart={blur.actions.startToFocus}
         onBgImageFadeEnd={() => setGlowPose('go')}
       />
       <Flex
@@ -38,42 +38,39 @@ const IndexPage: FC<Props> = () => {
           height: '100vh',
         }}
       >
-        <PosedImage
+        <motion.img
+          {...blur.props}
           sx={{
-            ...makeBlurIn().stop,
-            borderRadius: '50%',
+            variant: 'images.avatar',
             width: '33%',
             maxWidth: 400,
             boxShadow: 'display',
           }}
-          pose={fadePose}
           src={profilePic.src}
           srcSet={profilePic.srcSet}
           sizes={`(max-width: ${bp[1]}) 100px, (max-width: ${bp[2]}) 200px, 400px`}
         />
-        <PosedHeading
-          pose={fadePose}
-          variant="display--invert"
+        <motion.h1
+          {...blur.props}
           sx={{
-            ...makeBlurIn().stop,
+            variant: 'text.display--invert',
             fontSize: [5, 5, 7, 8, 9],
             mt: [2, 3],
           }}
         >
           Michael Utz
-        </PosedHeading>
-        <PosedHeading
+        </motion.h1>
+        <motion.h2
+          {...blur.props}
           sx={{
-            ...makeBlurIn().stop,
+            variant: 'text.display--invert',
             color: 'background',
             fontSize: [1, 1, 2, 3],
-            textShadow: 'display',
             mt: [1, 2],
           }}
-          pose={fadePose}
         >
           Front-End Developer
-        </PosedHeading>
+        </motion.h2>
         <PosedBox
           pose={glowPose}
           sx={{
@@ -146,18 +143,11 @@ const IndexPage: FC<Props> = () => {
 
 const P: FC = (props) => <Text variant="body" as="p" {...props} />
 
-const makeBlurIn = (blur: number = 30) => ({
-  stop: { filter: `blur(${blur}px)` },
-  go: { filter: 'blur(0px)', transition: { delay: 300, duration: 1000 } },
-})
-
 const glow = {
   stop: { opacity: 0 },
   go: { opacity: 1, transition: { duration: 1000, yoyo: 5.5 } },
 }
 
-const PosedHeading = posed(Heading)(makeBlurIn(10))
-const PosedImage = posed(Image)(makeBlurIn())
 const PosedBox = posed(Box)(glow)
 
 export default IndexPage
