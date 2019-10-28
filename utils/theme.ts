@@ -2,7 +2,7 @@ import { modularScale } from 'polished'
 import { Theme } from 'theme-ui'
 
 type Variants = {
-  [key in 'images' | 'text']: {}
+  [key in 'images' | 'text' | 'layouts']: {}
 }
 
 const colors = {
@@ -13,7 +13,11 @@ const colors = {
   accent: '#f15025',
 }
 
+const breakpoints = [480, 736, 980, 1280, 1690]
+const sizes = { container: breakpoints[1] }
+
 const theme: Theme & Variants = {
+  /** Theme */
   colors,
   fonts: {
     body: '"Titillium Web", sans-seif',
@@ -21,7 +25,8 @@ const theme: Theme & Variants = {
     monospace: '"Inconsolata", monospace',
     display: '"Amatic SC", sans-serif',
   },
-  breakpoints: [480, 736, 980, 1280, 1690].map((x) => `${x}px`),
+  sizes,
+  breakpoints: breakpoints.map((x) => `${x}px`),
   fontSizes: Array.from({ length: 10 }, (_, i) => modularScale(i)),
   shadows: { display: `0 0 30px ${colors.text}` },
   zIndices: {
@@ -42,6 +47,7 @@ const theme: Theme & Variants = {
     heading: 700,
     bold: 700,
   },
+  /** Variants */
   images: {
     avatar: {
       borderRadius: '50%',
@@ -67,6 +73,13 @@ const theme: Theme & Variants = {
     'display--invert': {
       variant: 'text.display',
       color: 'background',
+    },
+  },
+  layouts: {
+    container: {
+      maxWidth: sizes.container,
+      mx: 'auto',
+      px: 3,
     },
   },
 }
