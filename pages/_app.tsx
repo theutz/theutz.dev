@@ -10,7 +10,7 @@ export default class MyApp extends App {
       <ThemeProvider theme={theme}>
         <NextHead>
           <link
-            href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700|Ubuntu+Mono:400,400i,700&display=swap"
+            href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700|Titillium+Web:300,400,700&display=swap"
             rel="stylesheet"
           />
         </NextHead>

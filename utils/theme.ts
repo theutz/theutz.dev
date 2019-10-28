@@ -18,9 +18,9 @@ const colors = {
 const theme: Theme & Variants = {
   colors,
   fonts: {
-    body: '"Ubuntu Mono", monospace',
-    heading: '"Ubuntu Mono", monospace',
-    monospace: '"Ubuntu Mono", monospace',
+    body: '"Titillium Web", sans-seif',
+    heading: '"Amatic SC", sans-seif',
+    monospace: '"Inconsolata", monospace',
     display: '"Amatic SC", sans-serif',
   },
   breakpoints: [480, 736, 980, 1280, 1690].map((x) => `${x}px`),
@@ -40,7 +40,7 @@ const theme: Theme & Variants = {
     5: 10 ** 5,
   },
   fontWeights: {
-    body: 400,
+    body: 300,
     heading: 700,
     bold: 700,
   },
@@ -48,15 +48,18 @@ const theme: Theme & Variants = {
     body: {
       fontFamily: 'body',
       color: 'text',
+      fontWeight: 'body',
     },
     heading: {
       fontFamily: 'heading',
       color: 'text',
+      fontWeight: 'heading',
     },
     display: {
       fontFamily: 'display',
       color: 'text',
       textShadow: 'display',
+      fontWeight: 'bold',
     },
   },
 }

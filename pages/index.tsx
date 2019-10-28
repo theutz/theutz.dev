@@ -60,7 +60,6 @@ const IndexPage: FC<Props> = () => {
             ...makeBlurIn().stop,
             color: 'background',
             fontSize: [1, 1, 2, 3],
-            fontWeight: 'normal',
             textShadow: 'display',
             mt: [1, 2],
           }}
@@ -77,25 +76,34 @@ const IndexPage: FC<Props> = () => {
           <DownIcon sx={{ color: 'background', textShadow: 'display' }} />
         </PosedBox>
       </Flex>
-      <Grid sx={{ m: 3 }}>
-        <P>
-          Vitae voluptas nam provident architecto omnis dolores. Reprehenderit
-          totam consequatur voluptatum sunt rem blanditiis voluptatibus deserunt
-          eos. Et nesciunt velit ex assumenda deserunt neque velit. Facere eaque
-          expedita voluptas in.
-        </P>
-        <P>
-          Itaque et consequatur sapiente nisi expedita omnis est eos nobis.
-          Aspernatur quia sit a aut. Perspiciatis et ducimus quis dolor pariatur
-          aperiam. Voluptate eius eius nam quia enim non et quia.
-        </P>
-        <P>
-          Accusamus et voluptatem quo et veritatis sed quam. Veritatis in ex
-          omnis aliquid distinctio. Consequuntur voluptatem est tempore dolorum
-          dolores ea incidunt sequi. Officia laudantium voluptate similique
-          ipsum libero quibusdam nam. Consectetur reiciendis modi maiores
-          voluptas..
-        </P>
+      <Grid sx={{ m: 3 }} columns="3">
+        <Box>
+          <Heading>Veritatis deserunt beatae</Heading>
+          <P>
+            Vitae voluptas nam provident architecto omnis dolores. Reprehenderit
+            totam consequatur voluptatum sunt rem blanditiis voluptatibus
+            deserunt eos. Et nesciunt velit ex assumenda deserunt neque velit.
+            Facere eaque expedita voluptas in.
+          </P>
+        </Box>
+        <Box>
+          <Heading>Adipisci et accusantium</Heading>
+          <P>
+            Itaque et consequatur sapiente nisi expedita omnis est eos nobis.
+            Aspernatur quia sit a aut. Perspiciatis et ducimus quis dolor
+            pariatur aperiam. Voluptate eius eius nam quia enim non et quia.
+          </P>
+        </Box>
+        <Box>
+          <Heading>Ut placeat dignissimos</Heading>
+          <P>
+            Accusamus et voluptatem quo et veritatis sed quam. Veritatis in ex
+            omnis aliquid distinctio. Consequuntur voluptatem est tempore
+            dolorum dolores ea incidunt sequi. Officia laudantium voluptate
+            similique ipsum libero quibusdam nam. Consectetur reiciendis modi
+            maiores voluptas..
+          </P>
+        </Box>
       </Grid>
     </>
   )
