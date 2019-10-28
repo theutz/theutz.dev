@@ -4,7 +4,15 @@ import Head from '../components/head'
 import { jsx, useThemeUI } from 'theme-ui'
 import { Flex, Image, Heading, Box, Text, Grid } from '@theme-ui/components'
 import posed from 'react-pose'
-import DownIcon from '../components/icons/down-icon'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faChevronDoubleDown,
+  faUsersCrown,
+  faBrowser,
+  faPhoneLaptop,
+  faStoreAlt,
+  faStore,
+} from '@fortawesome/pro-duotone-svg-icons'
 const profilePic = require('../images/profile-pic.jpg?sizes[]=200,sizes[]=400')
 
 type Props = {}
@@ -65,7 +73,7 @@ const IndexPage: FC<Props> = () => {
           }}
           pose={fadePose}
         >
-          Front-end Developer
+          Front-End Developer
         </PosedHeading>
         <PosedBox
           pose={glowPose}
@@ -73,35 +81,61 @@ const IndexPage: FC<Props> = () => {
             mt: 4,
           }}
         >
-          <DownIcon sx={{ color: 'background', textShadow: 'display' }} />
+          <FontAwesomeIcon
+            icon={faChevronDoubleDown}
+            sx={{ color: 'background', textShadow: 'display' }}
+          />
         </PosedBox>
       </Flex>
-      <Grid sx={{ m: 3 }} columns={[1, 1, 3]}>
+      <Grid
+        sx={{
+          textAlign: 'center',
+          py: [4],
+          px: [4],
+        }}
+      >
+        <Heading sx={{ fontSize: [3] }}>Hello, I'm Michael Utz.</Heading>
+        <P>
+          I'm passionate about creating experiences for the web that are useful,
+          enjoyable, and intuitive.
+        </P>
+        <P>Let's build something together!</P>
+      </Grid>
+      <Grid sx={{ m: 3, textAlign: 'center' }} gap={[4]} columns={[1, 1, 3]}>
         <Box>
-          <Heading>Veritatis deserunt beatae</Heading>
+          <Box sx={{ fontSize: [3], mb: [2] }}>
+            <FontAwesomeIcon icon={faUsersCrown} />
+          </Box>
+          <Heading as="h3" sx={{ fontSize: [2], mb: [2] }}>
+            Focus on Users
+          </Heading>
           <P>
-            Vitae voluptas nam provident architecto omnis dolores. Reprehenderit
-            totam consequatur voluptatum sunt rem blanditiis voluptatibus
-            deserunt eos. Et nesciunt velit ex assumenda deserunt neque velit.
-            Facere eaque expedita voluptas in.
+            First and foremost, let's think about how to help our users do what
+            they came here to do.
           </P>
         </Box>
         <Box>
-          <Heading>Adipisci et accusantium</Heading>
+          <Box sx={{ fontSize: [3], mb: [2] }}>
+            <FontAwesomeIcon icon={faPhoneLaptop} />
+          </Box>
+          <Heading as="h3" sx={{ fontSize: [2], mb: [2] }}>
+            Write Healthy Code
+          </Heading>
           <P>
-            Itaque et consequatur sapiente nisi expedita omnis est eos nobis.
-            Aspernatur quia sit a aut. Perspiciatis et ducimus quis dolor
-            pariatur aperiam. Voluptate eius eius nam quia enim non et quia.
+            Then, let's write some nice, clean code to make it happen. Perfect
+            is good, but done is better.
           </P>
         </Box>
         <Box>
-          <Heading>Ut placeat dignissimos</Heading>
+          <Box sx={{ fontSize: [3], mb: [2] }}>
+            <FontAwesomeIcon icon={faStore} />
+          </Box>
+          <Heading as="h3" sx={{ fontSize: [2], mb: [2] }}>
+            Build Lasting Value
+          </Heading>
           <P>
-            Accusamus et voluptatem quo et veritatis sed quam. Veritatis in ex
-            omnis aliquid distinctio. Consequuntur voluptatem est tempore
-            dolorum dolores ea incidunt sequi. Officia laudantium voluptate
-            similique ipsum libero quibusdam nam. Consectetur reiciendis modi
-            maiores voluptas..
+            Let's cultivate healthy relationships with each other and our
+            customers to keep the good times rolling.
           </P>
         </Box>
       </Grid>
