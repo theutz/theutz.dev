@@ -13,7 +13,7 @@ import {
 } from '@fortawesome/pro-duotone-svg-icons'
 import { useBlur } from '../hooks/animations/useBlur'
 import { useFadeAndPulse } from '../hooks/animations/usePulsate'
-const profilePic = require('../images/profile-pic.jpg?sizes[]=200,sizes[]=400')
+const profilePic = require('../images/profile-pic.jpg?sizes[]=200,sizes[]=300')
 
 type Props = {}
 
@@ -43,19 +43,19 @@ const IndexPage: FC<Props> = () => {
           sx={{
             variant: 'images.avatar',
             width: '33%',
-            maxWidth: 400,
+            maxWidth: [100, 100, 200, 300],
             boxShadow: 'display',
           }}
           src={profilePic.src}
           srcSet={profilePic.srcSet}
-          sizes={`(max-width: ${bp[1]}) 100px, (max-width: ${bp[2]}) 200px, 400px`}
+          sizes={`(max-width: ${bp[1]}) 100px, (max-width: ${bp[2]}) 200px, 300px`}
         />
         <motion.h1
           {...blur.props}
           sx={{
             variant: 'text.display--invert',
-            fontSize: [5, 5, 7, 8, 9],
-            mt: [2, 3],
+            fontSize: [5, 5, 6, 7],
+            my: [2],
           }}
         >
           Michael Utz
@@ -74,7 +74,7 @@ const IndexPage: FC<Props> = () => {
         <motion.div
           {...fadeAndPulse.props}
           sx={{
-            mt: 4,
+            mt: 2,
             fontSize: [2],
             color: 'background',
             textShadow: 'display',
