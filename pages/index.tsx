@@ -76,7 +76,7 @@ const IndexPage: FC<Props> = () => {
           <DownIcon sx={{ color: 'background', textShadow: 'display' }} />
         </PosedBox>
       </Flex>
-      <Grid sx={{ m: 3 }} columns="3">
+      <Grid sx={{ m: 3 }} columns={[1, 1, 3]}>
         <Box>
           <Heading>Veritatis deserunt beatae</Heading>
           <P>

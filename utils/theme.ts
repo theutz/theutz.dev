@@ -10,8 +10,8 @@ type Variants = {
 }
 
 const colors = {
-  background: '#F3EADA',
-  text: '#1D141E',
+  background: '#F7EeDe',
+  text: '#1b121c',
   primary: '#33e',
 }
 
