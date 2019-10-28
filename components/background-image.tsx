@@ -1,15 +1,7 @@
 /** @jsx jsx **/
 import { jsx } from 'theme-ui'
-import {
-  FC,
-  useState,
-  useCallback,
-  useRef,
-  EventHandler,
-  SyntheticEvent,
-} from 'react'
-import { cover } from 'polished'
-import posed from 'react-pose'
+import { FC, useState } from 'react'
+import { useImageIsReady } from '../hooks/useImageIsReady'
 import { motion } from 'framer-motion'
 
 type Props = {
@@ -23,95 +15,51 @@ type Props = {
 const BackgroundImage: FC<Props> = ({
   src,
   srcSet,
-  placeholderUrl,
   onFadeStart = () => undefined,
   onFadeEnd = () => undefined,
+  placeholderUrl,
 }) => {
-  const [isActualImageVisible, setIsActualImageVisible] = useState(false)
-  const [currentSrc, setCurrentSrc] = useState(src)
-  const poseCount = useRef(0)
-
-  const show = () => {
-    if (isActualImageVisible) return
-    onFadeStart()
-    setIsActualImageVisible(true)
-  }
-
-  const imgEl = useCallback((node) => {
-    if (node === null) return
-    if (node.complete) {
-      show()
-      setCurrentSrc(node.currentSrc)
-    }
-  }, [])
-
-  const fullscreenImgStyle = {
-    ...cover(),
-    zIndex: -5,
-    background: 'no-repeat center right',
-    backgroundSize: 'cover',
-  }
-
-  type handleLoad = EventHandler<SyntheticEvent<HTMLImageElement, Event>>
-  const handleLoad: handleLoad = ({ currentTarget: { currentSrc } }) => {
-    setCurrentSrc(currentSrc)
-    show()
-  }
-
-  const handlePoseComplete = () => {
-    if (++poseCount.current === 1) onFadeEnd()
-  }
+  const img = useImageIsReady({ src })
 
   return (
-    <>
+    <div sx={{ backgroundColor: 'text' }}>
       <img
+        {...img.props}
         src={src}
         srcSet={srcSet}
-        ref={imgEl}
-        onLoad={handleLoad}
-        sx={{ ...fullscreenImgStyle, display: 'none' }}
+        sx={{ variant: 'images.fullscreen--right', display: 'none' }}
       />
-      {placeholderUrl && (
-        <PlaceholderImage
-          pose={isActualImageVisible ? 'hidden' : 'visible'}
-          sx={{
-            ...fullscreenImgStyle,
-            backgroundImage: `url("${placeholderUrl}")`,
-            filter: 'blur(20px)',
-          }}
-        />
-      )}
-      <ActualImage
-        initialPose="hidden"
-        pose={isActualImageVisible ? 'visible' : 'hidden'}
-        onPoseComplete={handlePoseComplete}
+      <motion.div
+        initial="visible"
+        animate={img.isReady ? 'hidden' : 'visible'}
+        transition={{ duration: 1 }}
+        variants={{
+          hidden: { opacity: 0, transform: 'scale(1)' },
+          visible: { opacity: 1, transform: 'scale(1.5)' },
+        }}
         sx={{
-          ...fullscreenImgStyle,
-          ...actualImagePoseConfig.hidden,
-          backgroundImage: `url("${currentSrc}")`,
+          variant: 'images.fullscreen--right',
+          backgroundImage: `url("${placeholderUrl}")`,
+          filter: 'blur(8px)',
         }}
       />
-    </>
+      <motion.div
+        variants={{
+          hidden: { opacity: 0, filter: 'blur(10px)' },
+          visible: { opacity: 1, filter: 'blur(0px)' },
+        }}
+        initial="hidden"
+        animate={img.isReady ? 'visible' : 'hidden'}
+        transition={{ duration: 0.5, ease: 'easeInOut' }}
+        sx={{
+          variant: 'images.fullscreen--right',
+          backgroundImage: `url("${img.currentSrc}")`,
+        }}
+        onAnimationStart={onFadeStart}
+        onAnimationComplete={onFadeEnd}
+      />
+    </div>
   )
 }
-
-const PlaceholderImage = posed.div({
-  visible: { opacity: 1 },
-  hidden: { opacity: 0 },
-})
-
-const actualImagePoseConfig = {
-  hidden: { opacity: 0, filter: 'blur(10px)' },
-  visible: {
-    opacity: 1,
-    filter: 'blur(0px)',
-    transition: {
-      filter: { delay: 250, duration: 500, ease: 'easeInOut' },
-      default: { duration: 500, ease: 'easeInOut' },
-    },
-  },
-}
-
-const ActualImage = posed.div(actualImagePoseConfig)
 
 export default BackgroundImage

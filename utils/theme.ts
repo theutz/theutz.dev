@@ -1,4 +1,4 @@
-import { modularScale } from 'polished'
+import { modularScale, cover } from 'polished'
 import { Theme } from 'theme-ui'
 
 type Variants = {
@@ -51,6 +51,18 @@ const theme: Theme & Variants = {
   images: {
     avatar: {
       borderRadius: '50%',
+    },
+    fullscreen: {
+      ...cover(),
+      zIndex: -5,
+      backgroundPositionX: 'center',
+      backgroundPoxitionY: 'center',
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'cover',
+    },
+    'fullscreen--right': {
+      variant: 'images.fullscreen',
+      backgroundPositionX: 'right',
     },
   },
   text: {
