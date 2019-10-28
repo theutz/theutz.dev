@@ -2,9 +2,7 @@ import { modularScale } from 'polished'
 import { Theme } from 'theme-ui'
 
 type Variants = {
-  text: {
-    [key: string]: {}
-  }
+  [key in 'images' | 'text']: {}
 }
 
 const colors = {
@@ -43,6 +41,11 @@ const theme: Theme & Variants = {
     body: 300,
     heading: 700,
     bold: 700,
+  },
+  images: {
+    avatar: {
+      borderRadius: '50%',
+    },
   },
   text: {
     body: {
