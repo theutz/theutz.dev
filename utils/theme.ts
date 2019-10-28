@@ -3,16 +3,16 @@ import { Theme } from 'theme-ui'
 
 type Variants = {
   text: {
-    body: {}
-    heading: {}
-    display: {}
+    [key: string]: {}
   }
 }
 
 const colors = {
-  background: '#F7EeDe',
+  background: '#f7eede',
   text: '#1b121c',
-  primary: '#33e',
+  primary: '#2274a5',
+  secondary: '#0197f6',
+  accent: '#f15025',
 }
 
 const theme: Theme & Variants = {
@@ -60,6 +60,10 @@ const theme: Theme & Variants = {
       color: 'text',
       textShadow: 'display',
       fontWeight: 'bold',
+    },
+    'display--invert': {
+      variant: 'text.display',
+      color: 'background',
     },
   },
 }

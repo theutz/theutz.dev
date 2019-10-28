@@ -53,10 +53,9 @@ const IndexPage: FC<Props> = () => {
         />
         <PosedHeading
           pose={fadePose}
-          variant="display"
+          variant="display--invert"
           sx={{
             ...makeBlurIn().stop,
-            color: 'background',
             fontSize: [5, 5, 7, 8, 9],
             mt: [2, 3],
           }}
@@ -94,19 +93,21 @@ const IndexPage: FC<Props> = () => {
           px: [4],
         }}
       >
-        <Heading sx={{ fontSize: [3] }}>Hello, I'm Michael Utz.</Heading>
-        <P>
+        <Heading sx={{ fontSize: [3], color: 'accent' }}>
+          Hello, I'm Michael Utz.
+        </Heading>
+        <P sx={{ fontSize: [0, 1] }}>
           I'm passionate about creating experiences for the web that are useful,
           enjoyable, and intuitive.
         </P>
-        <P>Let's build something together!</P>
+        <P sx={{ fontSize: [0, 1] }}>Let's build something together!</P>
       </Grid>
       <Grid sx={{ m: 3, textAlign: 'center' }} gap={[4]} columns={[1, 1, 3]}>
         <Box>
-          <Box sx={{ fontSize: [3], mb: [2] }}>
+          <Box sx={{ fontSize: [3], mb: [2], color: 'accent' }}>
             <FontAwesomeIcon icon={faUsersCrown} />
           </Box>
-          <Heading as="h3" sx={{ fontSize: [2], mb: [2] }}>
+          <Heading as="h3" sx={{ fontSize: [2], mb: [2], color: 'accent' }}>
             Focus on Users
           </Heading>
           <P>
@@ -115,10 +116,10 @@ const IndexPage: FC<Props> = () => {
           </P>
         </Box>
         <Box>
-          <Box sx={{ fontSize: [3], mb: [2] }}>
+          <Box sx={{ fontSize: [3], mb: [2], color: 'accent' }}>
             <FontAwesomeIcon icon={faPhoneLaptop} />
           </Box>
-          <Heading as="h3" sx={{ fontSize: [2], mb: [2] }}>
+          <Heading as="h3" sx={{ fontSize: [2], mb: [2], color: 'accent' }}>
             Write Healthy Code
           </Heading>
           <P>
@@ -127,10 +128,10 @@ const IndexPage: FC<Props> = () => {
           </P>
         </Box>
         <Box>
-          <Box sx={{ fontSize: [3], mb: [2] }}>
+          <Box sx={{ fontSize: [3], mb: [2], color: 'accent' }}>
             <FontAwesomeIcon icon={faStore} />
           </Box>
-          <Heading as="h3" sx={{ fontSize: [2], mb: [2] }}>
+          <Heading as="h3" sx={{ fontSize: [2], mb: [2], color: 'accent' }}>
             Build Lasting Value
           </Heading>
           <P>
