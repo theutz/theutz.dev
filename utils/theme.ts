@@ -1,29 +1,34 @@
-import { modularScale } from 'polished'
+import { modularScale, cover } from 'polished'
 import { Theme } from 'theme-ui'
 
 type Variants = {
-  text: {
-    display: {}
-  }
+  [key in 'images' | 'text' | 'layouts']: {}
 }
 
 const colors = {
-  text: '#F1E8D8',
-  background: '#1D141E',
-  primary: '#33e',
+  background: '#f7eede',
+  text: '#1b121c',
+  primary: '#2274a5',
+  secondary: '#0197f6',
+  accent: '#f15025',
 }
 
+const breakpoints = [480, 736, 980, 1280, 1690]
+const sizes = { container: breakpoints[1] }
+
 const theme: Theme & Variants = {
+  /** Theme */
   colors,
   fonts: {
-    body: 'system-ui, sans-serif',
-    heading: '"Avenir Next", sans-serif',
-    monospace: 'Menlo, monospace',
+    body: '"Titillium Web", sans-seif',
+    heading: '"Amatic SC", sans-seif',
+    monospace: '"Inconsolata", monospace',
     display: '"Amatic SC", sans-serif',
   },
-  breakpoints: [480, 736, 980, 1280, 1690].map((x) => `${x}px`),
+  sizes,
+  breakpoints: breakpoints.map((x) => `${x}px`),
   fontSizes: Array.from({ length: 10 }, (_, i) => modularScale(i)),
-  shadows: [`0 0 30px ${colors.background}`],
+  shadows: { display: `0 0 30px ${colors.text}` },
   zIndices: {
     '-5': -(10 ** 5),
     '-4': -(10 ** 4),
@@ -38,15 +43,55 @@ const theme: Theme & Variants = {
     5: 10 ** 5,
   },
   fontWeights: {
-    body: 400,
+    body: 300,
     heading: 700,
     bold: 700,
   },
+  /** Variants */
+  images: {
+    avatar: {
+      borderRadius: '50%',
+    },
+    fullscreen: {
+      ...cover(),
+      zIndex: -5,
+      backgroundPositionX: 'center',
+      backgroundPositionY: 'center',
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'cover',
+    },
+    'fullscreen--right': {
+      variant: 'images.fullscreen',
+      backgroundPositionX: 'right',
+    },
+  },
   text: {
+    body: {
+      fontFamily: 'body',
+      color: 'text',
+      fontWeight: 'body',
+    },
+    heading: {
+      fontFamily: 'heading',
+      color: 'text',
+      fontWeight: 'heading',
+    },
     display: {
       fontFamily: 'display',
       color: 'text',
-      textShadow: 0,
+      textShadow: 'display',
+      fontWeight: 'bold',
+    },
+    'display--invert': {
+      variant: 'text.display',
+      color: 'background',
+    },
+  },
+  layouts: {
+    container: {
+      maxWidth: sizes.container,
+      mx: 'auto',
+      px: 3,
     },
   },
 }
