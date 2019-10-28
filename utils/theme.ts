@@ -25,7 +25,7 @@ const theme: Theme & Variants = {
   },
   breakpoints: [480, 736, 980, 1280, 1690].map((x) => `${x}px`),
   fontSizes: Array.from({ length: 10 }, (_, i) => modularScale(i)),
-  shadows: [`0 0 30px ${colors.background}`],
+  shadows: { display: `0 0 30px ${colors.text}` },
   zIndices: {
     '-5': -(10 ** 5),
     '-4': -(10 ** 4),
@@ -56,7 +56,7 @@ const theme: Theme & Variants = {
     display: {
       fontFamily: 'display',
       color: 'text',
-      textShadow: 0,
+      textShadow: 'display',
     },
   },
 }

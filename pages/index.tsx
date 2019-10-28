@@ -36,7 +36,7 @@ const IndexPage: FC<Props> = () => {
             borderRadius: '50%',
             width: '33%',
             maxWidth: 400,
-            boxShadow: 0,
+            boxShadow: 'display',
           }}
           pose={fadePose}
           src={profilePic.src}
@@ -61,7 +61,7 @@ const IndexPage: FC<Props> = () => {
             color: 'background',
             fontSize: [1, 1, 2, 3],
             fontWeight: 'normal',
-            textShadow: 0,
+            textShadow: 'display',
             mt: [1, 2],
           }}
           pose={fadePose}
@@ -74,7 +74,7 @@ const IndexPage: FC<Props> = () => {
             mt: 4,
           }}
         >
-          <DownIcon sx={{ color: 'background' }} />
+          <DownIcon sx={{ color: 'background', textShadow: 'display' }} />
         </PosedBox>
       </Flex>
       <Grid sx={{ m: 3 }}>
