@@ -27,7 +27,6 @@
     "polished": "^3.4.1",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
-    "react-pose": "^4.0.9",
     "responsive-loader": "^1.2.0",
     "sharp": "^0.23.1",
     "theme-ui": "^0.2.44",
