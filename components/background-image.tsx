@@ -26,14 +26,14 @@ const BackgroundImage: FC<Props> = ({
   onFadeStart = () => undefined,
   onFadeEnd = () => undefined,
 }) => {
-  const [isVisible, setIsVisible] = useState(false)
+  const [isActualImageVisible, setIsActualImageVisible] = useState(false)
   const [currentSrc, setCurrentSrc] = useState(src)
   const poseCount = useRef(0)
 
   const show = () => {
-    if (isVisible) return
+    if (isActualImageVisible) return
     onFadeStart()
-    setIsVisible(true)
+    setIsActualImageVisible(true)
   }
 
   const imgEl = useCallback((node) => {
@@ -72,6 +72,7 @@ const BackgroundImage: FC<Props> = ({
       />
       {placeholderUrl && (
         <PlaceholderImage
+          pose={isActualImageVisible ? 'hidden' : 'visible'}
           sx={{
             ...fullscreenImgStyle,
             backgroundImage: `url("${placeholderUrl}")`,
@@ -81,7 +82,7 @@ const BackgroundImage: FC<Props> = ({
       )}
       <ActualImage
         initialPose="hidden"
-        pose={isVisible ? 'visible' : 'hidden'}
+        pose={isActualImageVisible ? 'visible' : 'hidden'}
         onPoseComplete={handlePoseComplete}
         sx={{
           ...fullscreenImgStyle,
@@ -93,7 +94,10 @@ const BackgroundImage: FC<Props> = ({
   )
 }
 
-const PlaceholderImage = posed.div()
+const PlaceholderImage = posed.div({
+  visible: { opacity: 1 },
+  hidden: { opacity: 0 },
+})
 
 const actualImagePoseConfig = {
   hidden: { opacity: 0, filter: 'blur(10px)' },
