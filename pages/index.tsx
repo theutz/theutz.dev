@@ -2,9 +2,8 @@
 import { FC, useState } from 'react'
 import Head from '../components/head'
 import { jsx, useThemeUI } from 'theme-ui'
-import { Flex, Image, Heading, Box, Text, Grid } from '@theme-ui/components'
-import posed from 'react-pose'
-import { motion, useAnimation } from 'framer-motion'
+import { Flex, Heading, Box, Text, Grid } from '@theme-ui/components'
+import { motion } from 'framer-motion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faChevronDoubleDown,
@@ -12,14 +11,15 @@ import {
   faPhoneLaptop,
   faStore,
 } from '@fortawesome/pro-duotone-svg-icons'
-import { useBlur } from '../hooks/useBlur'
+import { useBlur } from '../hooks/animations/useBlur'
+import { useFadeAndPulse } from '../hooks/animations/usePulsate'
 const profilePic = require('../images/profile-pic.jpg?sizes[]=200,sizes[]=400')
 
 type Props = {}
 
 const IndexPage: FC<Props> = () => {
   const blur = useBlur()
-  const [glowPose, setGlowPose] = useState<'stop' | 'go'>('stop')
+  const fadeAndPulse = useFadeAndPulse()
   const { theme } = useThemeUI()
   const bp = theme.breakpoints as string[]
 
@@ -27,8 +27,8 @@ const IndexPage: FC<Props> = () => {
     <>
       <Head
         title="Michael Utz | Front-End Developer"
-        onBgImageFadeStart={blur.actions.startToFocus}
-        onBgImageFadeEnd={() => setGlowPose('go')}
+        onBgImageFadeStart={blur.actions.toFocus}
+        onBgImageFadeEnd={fadeAndPulse.actions.toPulsate}
       />
       <Flex
         sx={{
@@ -71,17 +71,17 @@ const IndexPage: FC<Props> = () => {
         >
           Front-End Developer
         </motion.h2>
-        <PosedBox
-          pose={glowPose}
+        <motion.div
+          {...fadeAndPulse.props}
           sx={{
             mt: 4,
+            fontSize: [2],
+            color: 'background',
+            textShadow: 'display',
           }}
         >
-          <FontAwesomeIcon
-            icon={faChevronDoubleDown}
-            sx={{ color: 'background', textShadow: 'display' }}
-          />
-        </PosedBox>
+          <FontAwesomeIcon icon={faChevronDoubleDown} />
+        </motion.div>
       </Flex>
       <Grid
         sx={{
@@ -142,12 +142,5 @@ const IndexPage: FC<Props> = () => {
 }
 
 const P: FC = (props) => <Text variant="body" as="p" {...props} />
-
-const glow = {
-  stop: { opacity: 0 },
-  go: { opacity: 1, transition: { duration: 1000, yoyo: 5.5 } },
-}
-
-const PosedBox = posed(Box)(glow)
 
 export default IndexPage

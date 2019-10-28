@@ -9,8 +9,7 @@ export type Config = {
 }
 
 export const useBlur = (config?: Config) => {
-  const { radius = 30, initial = 'blurry', transition = { duration: 1 } } =
-    config || {}
+  const { radius = 30, initial = 'blurry', transition = {} } = config || {}
   const { duration = 1 } = transition
 
   const controls = useAnimation()
@@ -25,11 +24,11 @@ export const useBlur = (config?: Config) => {
       animate: controls,
       variants,
       initial,
-      transition,
+      transition: { duration, ...transition },
     },
     actions: {
-      startToFocus: () => controls.start('sharpened'),
-      startToBlur: () => controls.start('blurry'),
+      toFocus: () => controls.start('sharpened'),
+      toBlur: () => controls.start('blurry'),
       stop: controls.stop,
     },
   }
