@@ -1,6 +1,6 @@
 /** @jsx jsx **/
 import { jsx } from 'theme-ui'
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import { useImageIsReady } from '../hooks/useImageIsReady'
 import { motion } from 'framer-motion'
 
@@ -22,7 +22,7 @@ const BackgroundImage: FC<Props> = ({
   const img = useImageIsReady({ src })
 
   return (
-    <div sx={{ backgroundColor: 'text' }}>
+    <div sx={{ variant: 'images.fullscreen', backgroundColor: 'text' }}>
       <img
         {...img.props}
         src={src}
@@ -33,10 +33,7 @@ const BackgroundImage: FC<Props> = ({
         initial="visible"
         animate={img.isReady ? 'hidden' : 'visible'}
         transition={{ duration: 1 }}
-        variants={{
-          hidden: { opacity: 0, transform: 'scale(1)' },
-          visible: { opacity: 1, transform: 'scale(1.5)' },
-        }}
+        variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
         sx={{
           variant: 'images.fullscreen--right',
           backgroundImage: `url("${placeholderUrl}")`,

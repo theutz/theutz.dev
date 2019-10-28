@@ -56,7 +56,7 @@ const theme: Theme & Variants = {
       ...cover(),
       zIndex: -5,
       backgroundPositionX: 'center',
-      backgroundPoxitionY: 'center',
+      backgroundPositionY: 'center',
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'cover',
     },
