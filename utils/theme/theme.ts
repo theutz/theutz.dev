@@ -1,4 +1,5 @@
 import { modularScale } from 'polished'
+import { countToColumns } from '../css'
 
 export const colors = {
   background: '#f7eede',
@@ -45,3 +46,12 @@ export const zIndices = {
 }
 
 export const fontWeights = { body: 300, heading: 700, bold: 700 }
+
+export const grids = {
+  triplet: {
+    gridGap: [4],
+    gridTemplateColumns: countToColumns([1, 1, 3]),
+    m: 3,
+    textAlign: 'center',
+  },
+}

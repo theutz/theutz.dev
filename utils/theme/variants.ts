@@ -49,10 +49,10 @@ export const text = {
     mt: [1, 2],
   },
   title: {
-    fontSize: [3],
+    fontSize: [3, 3, 4, 5],
   },
   subtitle: {
-    fontSize: [1],
+    fontSize: [1, 1, 2, 3],
   },
 }
 

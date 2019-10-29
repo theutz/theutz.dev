@@ -1,0 +1,46 @@
+import { jsx } from 'theme-ui'
+import { Box, Grid } from '@theme-ui/components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faUsersCrown,
+  faPhoneLaptop,
+  faStore,
+} from '@fortawesome/pro-duotone-svg-icons'
+
+<div>
+  <Box sx={{ fontSize: [3], mb: [2], color: 'accent' }}>
+    <FontAwesomeIcon icon={faUsersCrown} />
+  </Box>
+
+### Focus on Users
+
+First and foremost, let's think about how to help our users do what they came
+here to do.
+
+</div>
+
+<div>
+  <Box sx={{ fontSize: [3], mb: [2], color: 'accent' }}>
+    <FontAwesomeIcon icon={faPhoneLaptop} />
+  </Box>
+
+### Write Healthy Code
+
+Then, let's write some nice, clean code to make it happen. Perfect is good,
+but done is better.
+
+</div>
+
+<div>
+  <Box sx={{ fontSize: [3], mb: [2], color: 'accent' }}>
+    <FontAwesomeIcon icon={faStore} />
+  </Box>
+
+### Build Lasting Value
+
+Let's cultivate healthy relationships with each other and our
+customers to keep the good times rolling.
+
+</div>
+
+export default (props) => <Grid variant="triplet" {...props} />
