@@ -6,7 +6,7 @@ type Config = {
   transition?: TargetAndTransition['transition']
 }
 
-export const useFadeAndPulse = (config?: Config) => {
+export const usePulsate = (config?: Config) => {
   const { initial = 'hidden', transition = {} } = config || {}
   const { duration = 1, delay = 1 } = transition
 
@@ -35,4 +35,4 @@ export const useFadeAndPulse = (config?: Config) => {
   }
 }
 
-export default useFadeAndPulse
+export default usePulsate
