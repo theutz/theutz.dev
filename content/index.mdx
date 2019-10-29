@@ -1,0 +1,77 @@
+import Head from '../components/head'
+import { Box, Grid } from '@theme-ui/components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faUsersCrown,
+  faPhoneLaptop,
+  faStore,
+} from '@fortawesome/pro-duotone-svg-icons'
+import { useBlur } from '../hooks/animations/useBlur'
+import { usePulsate } from '../hooks/animations/usePulsate'
+import { FaUsersCrown, FaPhoneLaptop, FaStore } from '../components/icons'
+import IconWrapper from '../components/icon-wrapper'
+import Hero from '../components/hero'
+const profilePic = require('../images/profile-pic.jpg?sizes[]=200,sizes[]=300')
+
+<Hero
+  title="Michael Utz"
+  subtitle="Front-end Developer"
+  blur={props.blur}
+  pulsate={props.pulsate}
+  profilePic={profilePic}
+/>
+
+<Box variant="layouts.container">
+<Box sx={welcome}>
+
+# Hello, I'm Michael Utz.
+
+I'm passionate about creating experiences for the web that are
+useful, enjoyable, and intuitive.
+
+## Let's build something together!
+
+</Box>
+<Grid variant="triplet" sx={triplet}>
+<div>
+
+### <FaUsersCrown wrapper={IconWrapper} /> Focus on Users
+
+First and foremost, let's think about how to help our users do what they need to
+do.
+
+</div>
+<div>
+
+### <FaPhoneLaptop wrapper={IconWrapper} /> Write Healthy Code
+
+Then, let's write some clean code to make it happen. Perfect is good;
+done is better.
+
+</div>
+<div>
+
+### <FaStore wrapper={IconWrapper} /> Create Lasting Value
+
+Finally, let's cultivate healthy relationships with each other and our customers.
+
+</div>
+</Grid>
+</Box>
+
+export const welcome = {
+  variant: 'layouts.flex-column',
+  textAlign: 'center',
+  '& p': {
+    variant: 'text.subtitle',
+  },
+}
+
+export const triplet = {
+  '& h3': {
+    display: 'flex',
+    flexDirection: ['row', 'row', 'column'],
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  },
+}

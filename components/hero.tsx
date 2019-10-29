@@ -31,6 +31,7 @@ export const Hero: React.FC<Props> = ({
     </Box>
   )
 }
+
 const Title: React.FC<Pick<Props, 'blur'>> = ({ children, blur }) => {
   return (
     <Styled.h1
