@@ -36,9 +36,17 @@ export const text = {
     textShadow: 'display',
     fontWeight: 'bold',
   },
-  'display--invert': {
+  hero__title: {
     variant: 'text.display',
     color: 'background',
+    fontSize: [6, 6, 7, 8],
+    my: [2],
+  },
+  hero__subtitle: {
+    variant: 'text.display',
+    color: 'background',
+    fontSize: [2, 2, 3, 4],
+    mt: [1, 2],
   },
   title: {
     fontSize: [3],
@@ -66,5 +74,9 @@ export const layouts = {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  hero: {
+    variant: 'layouts.container--flex-column',
+    height: '100vh',
   },
 }

@@ -17,7 +17,12 @@ export const fonts = {
 
 export const breakpoints = [480, 736, 980, 1280, 1690].map((x) => `${x}px`)
 
-export const sizes = { container: breakpoints[1] }
+export const sizes = {
+  container: breakpoints[1],
+  hero: {
+    avatar: [100, 100, 200, 300],
+  },
+}
 
 export const fontSizes = Array.from({ length: 10 }, (_, i) =>
   modularScale(i - 1)
