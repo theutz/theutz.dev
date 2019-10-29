@@ -1,5 +1,4 @@
 import * as theme from './theme'
-import * as styles from './styles'
 import { cover } from 'polished'
 
 export const images = {
@@ -28,8 +27,8 @@ export const text = {
   },
   heading: {
     fontFamily: 'heading',
-    color: 'text',
     fontWeight: 'heading',
+    color: 'accent',
   },
   display: {
     fontFamily: 'display',
@@ -50,10 +49,12 @@ export const text = {
     mt: [1, 2],
   },
   title: {
-    fontSize: styles.h1.fontSize.map((x) => ++x),
+    variant: 'text.heading',
+    fontSize: [6, 7, 8],
   },
   subtitle: {
-    fontSize: styles.p.fontSize.map((x) => ++x),
+    variant: 'text.body',
+    fontSize: [3],
   },
 }
 

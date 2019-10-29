@@ -25,7 +25,7 @@ export const sizes = {
   },
 }
 
-export const fontSizes = Array.from({ length: 8 }, (_, i) =>
+export const fontSizes = Array.from({ length: 15 }, (_, i) =>
   modularScale(i, '1em', 'minorThird')
 )
 
