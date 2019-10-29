@@ -1,4 +1,5 @@
-import { sizes } from './theme'
+import * as theme from './theme'
+import * as styles from './styles'
 import { cover } from 'polished'
 
 export const images = {
@@ -49,16 +50,16 @@ export const text = {
     mt: [1, 2],
   },
   title: {
-    fontSize: [3, 3, 4, 5],
+    fontSize: styles.h1.fontSize.map((x) => ++x),
   },
   subtitle: {
-    fontSize: [1, 1, 2, 3],
+    fontSize: styles.p.fontSize.map((x) => ++x),
   },
 }
 
 export const layouts = {
   container: {
-    maxWidth: sizes.container,
+    maxWidth: theme.sizes.container,
     mx: 'auto',
     px: 3,
   },

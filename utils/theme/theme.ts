@@ -25,8 +25,8 @@ export const sizes = {
   },
 }
 
-export const fontSizes = Array.from({ length: 10 }, (_, i) =>
-  modularScale(i - 1)
+export const fontSizes = Array.from({ length: 8 }, (_, i) =>
+  modularScale(i, '1em', 'minorThird')
 )
 
 export const shadows = { display: `0 0 30px ${colors.text}` }

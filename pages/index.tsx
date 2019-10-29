@@ -1,7 +1,7 @@
 /** @jsx jsx **/
 import Head from '../components/head'
-import { jsx, Styled } from 'theme-ui'
-import { Box } from '@theme-ui/components'
+import { jsx } from 'theme-ui'
+import { Box, Grid } from '@theme-ui/components'
 import { useBlur } from '../hooks/animations/useBlur'
 import { usePulsate } from '../hooks/animations/usePulsate'
 const profilePic = require('../images/profile-pic.jpg?sizes[]=200,sizes[]=300')
@@ -30,7 +30,7 @@ const IndexPage: React.FC<Props> = () => {
         profilePic={profilePic}
       />
       <Box variant="layouts.container">
-        <Welcome
+        <Box
           sx={{
             variant: 'layouts.flex-column',
             textAlign: 'center',
@@ -41,8 +41,22 @@ const IndexPage: React.FC<Props> = () => {
               variant: 'text.subtitle',
             },
           }}
-        />
-        <Triplet />
+        >
+          <Welcome />
+        </Box>
+        <Grid
+          variant="triplet"
+          sx={{
+            '& h3': {
+              display: 'flex',
+              flexDirection: ['row', 'row', 'column'],
+              justifyContent: 'space-around',
+              alignItems: 'center',
+            },
+          }}
+        >
+          <Triplet />
+        </Grid>
       </Box>
     </>
   )

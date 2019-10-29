@@ -6,41 +6,30 @@ import {
   faPhoneLaptop,
   faStore,
 } from '@fortawesome/pro-duotone-svg-icons'
+import { FaUsersCrown, FaPhoneLaptop, FaStore } from '../../components/icons'
+import IconWrapper from './icon-wrapper'
 
 <div>
-  <Box sx={{ fontSize: [3], mb: [2], color: 'accent' }}>
-    <FontAwesomeIcon icon={faUsersCrown} />
-  </Box>
 
-### Focus on Users
+### <FaUsersCrown wrapper={IconWrapper} /> Focus on Users
 
 First and foremost, let's think about how to help our users do what they came
 here to do.
 
 </div>
-
 <div>
-  <Box sx={{ fontSize: [3], mb: [2], color: 'accent' }}>
-    <FontAwesomeIcon icon={faPhoneLaptop} />
-  </Box>
 
-### Write Healthy Code
+### <FaPhoneLaptop wrapper={IconWrapper} /> Write Healthy Code
 
 Then, let's write some nice, clean code to make it happen. Perfect is good,
 but done is better.
 
 </div>
-
 <div>
-  <Box sx={{ fontSize: [3], mb: [2], color: 'accent' }}>
-    <FontAwesomeIcon icon={faStore} />
-  </Box>
 
-### Build Lasting Value
+### <FaStore wrapper={IconWrapper} /> Build Lasting Value
 
 Let's cultivate healthy relationships with each other and our
 customers to keep the good times rolling.
 
 </div>
-
-export default (props) => <Grid variant="triplet" {...props} />
