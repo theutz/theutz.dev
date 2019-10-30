@@ -50,7 +50,7 @@ export const fontWeights = { body: 300, heading: 700, bold: 700 }
 export const grids = {
   triplet: {
     gridGap: [4],
-    gridTemplateColumns: countToColumns([1, 1, 3]),
+    gridTemplateColumns: countToColumns([1, 3]),
     m: 3,
     textAlign: 'center',
   },

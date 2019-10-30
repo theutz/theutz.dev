@@ -51,11 +51,11 @@ export const text = {
   },
   title: {
     variant: 'text.heading',
-    fontSize: [6, 7, 8],
+    fontSize: [7, 8, 8],
   },
   subtitle: {
     variant: 'text.body',
-    fontSize: [3],
+    fontSize: [2, 3],
   },
 }
 

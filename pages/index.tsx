@@ -21,7 +21,7 @@ const IndexPage: React.FC<Props> = () => {
           triplet: {
             '& h3': {
               display: 'flex',
-              flexDirection: ['row', 'row', 'column'],
+              flexDirection: ['row', 'column'],
               justifyContent: 'space-around',
               alignItems: 'center',
             },
