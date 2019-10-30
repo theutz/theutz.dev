@@ -8,7 +8,8 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:prettier/recommended"
   ],
   "globals": {
     "Atomics": "readonly",
@@ -23,5 +24,9 @@
     "sourceType": "module"
   },
   "plugins": ["react", "@typescript-eslint"],
-  "rules": {}
+  "rules": {
+    "react/prop-types": "off",
+    "@typescript-eslint/member-delimiter-style": "off",
+    "@typescript-eslint/explicit-function-return-type": [0]
+  }
 }
