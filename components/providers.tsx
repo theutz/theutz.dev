@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { ThemeProvider } from 'theme-ui'
 import theme from '../utils/theme'
 import { useHeroImageStateValue, HeroImageContext } from './contexts/hero-image'

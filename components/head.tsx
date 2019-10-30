@@ -4,6 +4,7 @@ import { FC } from 'react'
 import NextHead from 'next/head'
 import GlobalStyles from './global-styles'
 import BackgroundImage from '../components/background-image'
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const bgImg = require('../images/aaron-burson-aE3gcKW1BxU-unsplash.jpg?resize&placeholder&sizes[]=600,sizes[]=700,sizes[]=1000,sizes[]=2000')
 
 type Props = {

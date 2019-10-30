@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import React, { FC } from 'react'
 import { Global } from '@emotion/core'
 import { normalize } from 'polished'
 

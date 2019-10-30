@@ -1,3 +1,4 @@
+import React from 'react'
 import App from 'next/app'
 import NextHead from 'next/head'
 import Providers from '../components/providers'
