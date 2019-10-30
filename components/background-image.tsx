@@ -1,25 +1,19 @@
 /** @jsx jsx **/
 import { jsx } from 'theme-ui'
-import { FC } from 'react'
+import { FC, useContext } from 'react'
 import { useImageIsReady } from '../hooks/useImageIsReady'
 import { motion } from 'framer-motion'
+import { HeroImageContext } from '../components/contexts/hero-image'
 
 type Props = {
   src?: string
   srcSet?: string
-  onFadeStart?: () => void
-  onFadeEnd?: () => void
   placeholderUrl?: string
 }
 
-const BackgroundImage: FC<Props> = ({
-  src,
-  srcSet,
-  onFadeStart = () => undefined,
-  onFadeEnd = () => undefined,
-  placeholderUrl,
-}) => {
+const BackgroundImage: FC<Props> = ({ src, srcSet, placeholderUrl }) => {
   const img = useImageIsReady({ src })
+  const [, setHeroImageState] = useContext(HeroImageContext)
 
   return (
     <div sx={{ variant: 'images.fullscreen', backgroundColor: 'text' }}>
@@ -52,8 +46,8 @@ const BackgroundImage: FC<Props> = ({
           variant: 'images.fullscreen--right',
           backgroundImage: `url("${img.currentSrc}")`,
         }}
-        onAnimationStart={onFadeStart}
-        onAnimationComplete={onFadeEnd}
+        onAnimationStart={() => setHeroImageState('started')}
+        onAnimationComplete={() => setHeroImageState('finished')}
       />
     </div>
   )

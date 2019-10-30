@@ -8,29 +8,25 @@ export type Config = {
   transition?: TargetAndTransition['transition']
 }
 
-export const useBlur = (config?: Config) => {
-  const { radius = 30, initial = 'blurry', transition = {} } = config || {}
-  const { duration = 1 } = transition
-
-  const controls = useAnimation()
-
+export const useBlur = ({
+  radius = 30,
+  initial = 'blurry',
+  ...config
+}: Config = {}) => {
+  const animate = useAnimation()
   const variants: { [key in Variants]: TargetAndTransition } = {
     blurry: { filter: `blur(${radius}px)` },
     sharpened: { filter: 'blur(0px)' },
   }
+  const transition = { duration: 1, ...config.transition }
+
+  const toFocus = () => animate.start('sharpened')
+  const toBlur = () => animate.start('blurry')
+  const stop = animate.stop
 
   return {
-    props: {
-      animate: controls,
-      variants,
-      initial,
-      transition: { duration, ...transition },
-    },
-    actions: {
-      toFocus: () => controls.start('sharpened'),
-      toBlur: () => controls.start('blurry'),
-      stop: controls.stop,
-    },
+    props: { animate, variants, initial, transition },
+    actions: { toFocus, toBlur, stop },
   }
 }
 

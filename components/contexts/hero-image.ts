@@ -1,10 +1,14 @@
-import { createContext } from 'react'
-import { useBlur } from '../../hooks/animations/useBlur'
-import { usePulsate } from '../../hooks/animations/usePulsate'
+import { createContext, useState } from 'react'
 
-type Value = {
-  blur: ReturnType<typeof useBlur>
-  pulsate: ReturnType<typeof usePulsate>
+type States = 'initial' | 'started' | 'finished'
+type Value = [States, (state: States) => void]
+
+const initialValue: Value = ['initial', () => {}]
+
+export const useHeroImageStateValue = () => {
+  const [state] = initialValue
+  const value = useState(state)
+  return value
 }
 
-export default createContext<Value | null>(null)
+export const HeroImageContext = createContext(initialValue)

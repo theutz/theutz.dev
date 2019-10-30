@@ -1,19 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { ThemeProvider } from 'theme-ui'
 import theme from '../utils/theme'
-import { useBlur } from '../hooks/animations/useBlur'
-import HeroImageContext from './contexts/hero-image'
-import { usePulsate } from '../hooks/animations/usePulsate'
+import { useHeroImageStateValue, HeroImageContext } from './contexts/hero-image'
 
 const Providers: React.FC = ({ children }) => {
-  const blur = useBlur()
-  const pulsate = usePulsate()
-
-  const [heroImageValue, setHeroImageValue] = useState({ blur, pulsate })
+  const heroImageStateValue = useHeroImageStateValue()
 
   return (
     <ThemeProvider theme={theme}>
-      <HeroImageContext.Provider value={heroImageValue}>
+      <HeroImageContext.Provider value={heroImageStateValue}>
         {children}
       </HeroImageContext.Provider>
     </ThemeProvider>
