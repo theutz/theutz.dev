@@ -1,14 +1,39 @@
+import React, { FC, ComponentType } from 'react'
 import {
   FontAwesomeIcon,
   FontAwesomeIconProps,
 } from '@fortawesome/react-fontawesome'
+import { startCase, upperCase, replace } from 'lodash'
 
-type Props = FontAwesomeIconProps & { wrapper?: React.ComponentType }
+const DefaultWrapper: FC = (props) => <div {...props} />
+type IconObject = { prefix: string; iconName: string }
+type IconProps<W> = {
+  wrapper: ComponentType<W>
+  iconProps: Omit<FontAwesomeIconProps, 'icon'>
+} & W
 
-export function makeIcon(icon: FontAwesomeIconProps['icon']): React.FC<Props> {
-  return ({ wrapper: Wrapper = (p) => <div {...p} />, ...props }) => (
-    <Wrapper>
-      <FontAwesomeIcon {...props} icon={icon} />
-    </Wrapper>
-  )
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function makeIcon<T extends any>(icon: FontAwesomeIconProps['icon']) {
+  const { prefix, iconName } = icon as IconObject
+
+  const Icon: FC<IconProps<T>> = ({
+    wrapper: Wrapper = DefaultWrapper,
+    iconProps,
+    ...rest
+  }) => {
+    const props = rest as T
+    return (
+      <Wrapper {...props}>
+        <FontAwesomeIcon icon={icon} {...iconProps} />
+      </Wrapper>
+    )
+  }
+
+  Icon.displayName = [
+    upperCase(prefix),
+    replace(startCase(iconName), ' ', ''),
+    `Icon`,
+  ].join('')
+
+  return Icon
 }

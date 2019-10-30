@@ -4,8 +4,7 @@ import { Box } from '@theme-ui/components'
 import { motion } from 'framer-motion'
 import { useBlur } from '../hooks/animations/useBlur'
 import { usePulsate } from '../hooks/animations/usePulsate'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronDoubleDown } from '@fortawesome/pro-duotone-svg-icons'
+import { FADChevronDoubleDown } from './icons'
 
 type Props = {
   title: string
@@ -14,6 +13,23 @@ type Props = {
   blur: ReturnType<typeof useBlur>
   pulsate: ReturnType<typeof usePulsate>
 }
+
+const DownIconWrapper: React.FC<Pick<Props, 'pulsate'>> = ({
+  pulsate,
+  ...props
+}) => (
+  <Styled.div
+    as={motion.div}
+    {...pulsate.props}
+    sx={{
+      mt: 2,
+      fontSize: [2],
+      color: 'background',
+      textShadow: 'display',
+    }}
+    {...props}
+  />
+)
 
 export const Hero: React.FC<Props> = ({
   title,
@@ -27,7 +43,7 @@ export const Hero: React.FC<Props> = ({
       <ProfilePic blur={blur} profilePic={profilePic} />
       <Title blur={blur}>{title}</Title>
       <Subtitle blur={blur}>{subtitle}</Subtitle>
-      <DownIcon pulsate={pulsate} />
+      <FADChevronDoubleDown wrapper={DownIconWrapper} pulsate={pulsate} />
     </Box>
   )
 }
@@ -82,23 +98,6 @@ const ProfilePic: React.FC<
       srcSet={srcSet}
       sizes={sizes}
     />
-  )
-}
-
-const DownIcon: React.FC<Pick<Props, 'pulsate'>> = ({ pulsate }) => {
-  return (
-    <Styled.div
-      as={motion.div}
-      {...pulsate.props}
-      sx={{
-        mt: 2,
-        fontSize: [2],
-        color: 'background',
-        textShadow: 'display',
-      }}
-    >
-      <FontAwesomeIcon icon={faChevronDoubleDown} />
-    </Styled.div>
   )
 }
 
