@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/camelcase */
 import * as theme from './theme'
 import { cover } from 'polished'
 
