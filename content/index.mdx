@@ -13,16 +13,16 @@ import IconWrapper from '../components/icon-wrapper'
 import Hero from '../components/hero'
 const profilePic = require('../images/profile-pic.jpg?sizes[]=200,sizes[]=300')
 
-<Hero
-  title="Michael Utz"
-  subtitle="Front-end Developer"
-  blur={props.blur}
-  pulsate={props.pulsate}
-  profilePic={profilePic}
-/>
+<Hero profilePic={profilePic}>
+
+# Michael Utz
+
+## Front-end Developer
+
+</Hero>
 
 <Box variant="layouts.container">
-<Box sx={welcome}>
+<Box sx={props.styles.welcome}>
 
 # Hello, I'm Michael Utz.
 
@@ -32,7 +32,7 @@ useful, enjoyable, and intuitive.
 ## Let's build something together!
 
 </Box>
-<Grid variant="triplet" sx={triplet}>
+<Grid variant="triplet" sx={props.styles.triplet}>
 <div>
 
 ### <FADUsersCrown wrapper={IconWrapper} /> Focus on Users
@@ -58,20 +58,3 @@ Finally, let's cultivate healthy relationships with each other and our customers
 </div>
 </Grid>
 </Box>
-
-export const welcome = {
-  variant: 'layouts.flex-column',
-  textAlign: 'center',
-  '& p': {
-    variant: 'text.subtitle',
-  },
-}
-
-export const triplet = {
-  '& h3': {
-    display: 'flex',
-    flexDirection: ['row', 'row', 'column'],
-    justifyContent: 'space-around',
-    alignItems: 'center',
-  },
-}
