@@ -1,23 +1,23 @@
 /** @jsx jsx */
+import React, { useEffect, useContext } from 'react'
 import { jsx, useThemeUI, Styled } from 'theme-ui'
 import { Box } from '@theme-ui/components'
 import { motion } from 'framer-motion'
 import { useBlur } from '../hooks/animations/useBlur'
 import { usePulsate } from '../hooks/animations/usePulsate'
 import { FADChevronDoubleDown } from './icons'
+import { get } from 'lodash'
+import { HeroImageContext } from './contexts/hero-image'
 
 type Props = {
-  title: string
-  subtitle: string
+  /** Or pass a h1 as a child */
+  title?: string
+  /** Or pass an h2 as a child */
+  subtitle?: string
   profilePic?: { src?: string; srcSet?: string }
-  blur: ReturnType<typeof useBlur>
-  pulsate: ReturnType<typeof usePulsate>
 }
 
-const DownIconWrapper: React.FC<Pick<Props, 'pulsate'>> = ({
-  pulsate,
-  ...props
-}) => (
+const DownIconWrapper: React.FC<WithPulsate> = ({ pulsate, ...props }) => (
   <Styled.div
     as={motion.div}
     {...pulsate.props}
@@ -32,12 +32,35 @@ const DownIconWrapper: React.FC<Pick<Props, 'pulsate'>> = ({
 )
 
 export const Hero: React.FC<Props> = ({
-  title,
-  subtitle,
-  pulsate,
-  blur,
+  title: propTitle,
+  subtitle: propSubtitle,
   profilePic = {},
+  children,
 }) => {
+  const blur = useBlur()
+  const pulsate = usePulsate()
+
+  const [heroImageState] = useContext(HeroImageContext)
+
+  useEffect(() => {
+    if (heroImageState === 'started') blur.actions.toFocus()
+    if (heroImageState === 'finished') pulsate.actions.toPulsate()
+  }, [heroImageState])
+
+  const kids = React.Children.toArray(children)
+
+  const title = get(
+    kids.find((k) => get(k, 'props.mdxType') === 'h1'),
+    'props.children',
+    propTitle
+  )
+
+  const subtitle = get(
+    kids.find((k) => get(k, 'props.mdxType') === 'h2'),
+    'props.children',
+    propSubtitle
+  )
+
   return (
     <Box variant="layouts.hero">
       <ProfilePic blur={blur} profilePic={profilePic} />
@@ -48,7 +71,7 @@ export const Hero: React.FC<Props> = ({
   )
 }
 
-const Title: React.FC<Pick<Props, 'blur'>> = ({ children, blur }) => {
+const Title: React.FC<WithBlur> = ({ children, blur }) => {
   return (
     <Styled.h1
       {...blur.props}
@@ -60,7 +83,7 @@ const Title: React.FC<Pick<Props, 'blur'>> = ({ children, blur }) => {
   )
 }
 
-const Subtitle: React.FC<Pick<Props, 'blur'>> = ({ blur, children }) => {
+const Subtitle: React.FC<WithBlur> = ({ blur, children }) => {
   return (
     <Styled.h2
       {...blur.props}
@@ -72,9 +95,8 @@ const Subtitle: React.FC<Pick<Props, 'blur'>> = ({ blur, children }) => {
   )
 }
 
-const ProfilePic: React.FC<
-  Pick<Props, 'blur'> & NonNullable<Pick<Props, 'profilePic'>>
-> = ({ blur, profilePic = {} }) => {
+type ProfilePic = React.FC<WithBlur & NonNullable<Pick<Props, 'profilePic'>>>
+const ProfilePic: ProfilePic = ({ blur, profilePic = {} }) => {
   const { src = undefined, srcSet = undefined } = profilePic
   const breakpoints = useThemeUI().theme.breakpoints as string[]
 
@@ -102,3 +124,6 @@ const ProfilePic: React.FC<
 }
 
 export default Hero
+
+type WithBlur = { blur: ReturnType<typeof useBlur> }
+type WithPulsate = { pulsate: ReturnType<typeof usePulsate> }
