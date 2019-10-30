@@ -6,33 +6,25 @@ type Config = {
   transition?: TargetAndTransition['transition']
 }
 
-export const useFadeAndPulse = (config?: Config) => {
-  const { initial = 'hidden', transition = {} } = config || {}
-  const { duration = 1, delay = 1 } = transition
-
-  const controls = useAnimation()
-
+export const usePulsate = ({ initial = 'hidden', ...config }: Config = {}) => {
+  const animate = useAnimation()
+  const transition = { duration: 1, delay: 1, ...config.transition }
   const variants: { [key in Variants]: TargetAndTransition } = {
     hidden: { opacity: 0 },
     pulsate: {
       opacity: 1,
-      transition: { yoyo: 3.5, duration: 1 },
+      transition: { yoyo: 3.5, ...transition },
     },
   }
 
+  const toHidden = () => animate.start('hidden')
+  const toPulsate = () => animate.start('pulsate')
+  const stop = animate.stop
+
   return {
-    props: {
-      animate: controls,
-      variants,
-      initial,
-      transition: { duration, delay, ...transition },
-    },
-    actions: {
-      toHidden: () => controls.start('hidden'),
-      toPulsate: () => controls.start('pulsate'),
-      stop: controls.stop,
-    },
+    props: { animate, variants, initial, transition },
+    actions: { toHidden, toPulsate, stop },
   }
 }
 
-export default useFadeAndPulse
+export default usePulsate

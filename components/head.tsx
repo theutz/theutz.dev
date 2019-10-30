@@ -11,8 +11,6 @@ type Props = {
   description?: string
   url?: string
   ogImage?: string
-  onBgImageFadeStart?: () => void
-  onBgImageFadeEnd?: () => void
 }
 
 const Head: FC<Props> = ({
@@ -20,8 +18,6 @@ const Head: FC<Props> = ({
   description = '',
   url = '',
   ogImage = '',
-  onBgImageFadeStart = () => undefined,
-  onBgImageFadeEnd = () => undefined,
 }) => (
   <>
     <NextHead>
@@ -48,8 +44,6 @@ const Head: FC<Props> = ({
       src={bgImg.src}
       srcSet={bgImg.srcSet}
       placeholderUrl={bgImg.placeholder}
-      onFadeStart={onBgImageFadeStart}
-      onFadeEnd={onBgImageFadeEnd}
     />
   </>
 )

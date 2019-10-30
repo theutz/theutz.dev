@@ -1,13 +1,13 @@
 import App from 'next/app'
 import NextHead from 'next/head'
-import { ThemeProvider } from 'theme-ui'
-import theme from '../utils/theme'
+import Providers from '../components/providers'
 
 export default class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props
+
     return (
-      <ThemeProvider theme={theme}>
+      <Providers>
         <NextHead>
           <link
             href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700|Titillium+Web:300,400,700&display=swap"
@@ -15,7 +15,7 @@ export default class MyApp extends App {
           />
         </NextHead>
         <Component {...pageProps} />
-      </ThemeProvider>
+      </Providers>
     )
   }
 }
