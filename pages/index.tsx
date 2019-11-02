@@ -13,17 +13,9 @@ const IndexPage: React.FC<Props> = () => {
         styles={{
           welcome: {
             variant: 'layouts.flex-column',
-            textAlign: 'center',
+            // textAlign: 'center',
             '& p': {
               variant: 'text.subtitle',
-            },
-          },
-          triplet: {
-            '& h3': {
-              display: 'flex',
-              flexDirection: ['row', 'column'],
-              justifyContent: 'space-around',
-              alignItems: 'center',
             },
           },
         }}
