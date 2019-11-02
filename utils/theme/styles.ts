@@ -25,3 +25,7 @@ export const p = {
   fontSize: [0],
   mt: [0],
 }
+
+export const li = {
+  variant: 'text.body',
+}

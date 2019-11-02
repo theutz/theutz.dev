@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/camelcase */
 import * as theme from './theme'
 import { cover } from 'polished'
+import { countToColumns } from '../css'
 
 export const images = {
   avatar: {
@@ -81,5 +82,26 @@ export const layouts = {
   hero: {
     variant: 'layouts.container--flex-column',
     height: '100vh',
+  },
+}
+
+export const grids = {
+  triplet: {
+    gridGap: [4],
+    gridTemplateColumns: countToColumns([1, 3]),
+    '& h3': {
+      display: 'flex',
+      flexDirection: ['row', 'column'],
+      justifyContent: 'flex-start',
+      alignItems: 'center',
+      m: 0,
+      mb: [2],
+      '& > .fa-icon': {
+        mr: [3],
+      },
+    },
+    '& p': {
+      m: 0,
+    },
   },
 }
