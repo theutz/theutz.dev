@@ -13,8 +13,8 @@ const IndexPage: React.FC<Props> = () => {
         styles={{
           welcome: {
             variant: 'layouts.flex-column',
-            // textAlign: 'center',
-            '& p': {
+            alignItems: ['flex-start'],
+            p: {
               variant: 'text.subtitle',
             },
           },

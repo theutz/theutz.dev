@@ -1,11 +1,13 @@
-import { modularScale } from 'polished'
+import { modularScale, lighten } from 'polished'
 
+const text = '#1b121c'
 export const colors = {
   background: '#f7eede',
-  text: '#1b121c',
+  text,
   primary: '#2274a5',
   secondary: '#0197f6',
   accent: '#f15025',
+  muted: lighten(0.5, text),
 }
 
 export const fonts = {

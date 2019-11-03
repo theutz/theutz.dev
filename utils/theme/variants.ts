@@ -89,19 +89,39 @@ export const grids = {
   triplet: {
     gridGap: [4],
     gridTemplateColumns: countToColumns([1, 3]),
-    '& h3': {
-      display: 'flex',
-      flexDirection: ['row', 'column'],
-      justifyContent: 'flex-start',
-      alignItems: 'center',
-      m: 0,
-      mb: [2],
-      '& > .fa-icon': {
-        mr: [3],
+    '& div': {
+      h3: {
+        display: 'flex',
+        flexDirection: ['row', 'column'],
+        justifyContent: 'flex-start',
+        alignItems: ['center', 'flex-start'],
+        m: 0,
+        mb: [2],
+        '& > .fa-icon': {
+          mr: [3],
+        },
       },
-    },
-    '& p': {
-      m: 0,
+      p: {
+        m: 0,
+      },
+      ul: {
+        m: 0,
+        p: 0,
+        mt: [3],
+        display: 'flex',
+        listStyle: 'none',
+        flexFlow: 'row wrap',
+        justifyContent: 'flex-start',
+        fontSize: [0],
+        li: {
+          ':not(:last-child)::after': {
+            content: '"//"',
+            mx: [2],
+            color: 'muted',
+          },
+          mb: [2],
+        },
+      },
     },
   },
 }
