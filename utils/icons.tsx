@@ -4,8 +4,9 @@ import {
   FontAwesomeIconProps,
 } from '@fortawesome/react-fontawesome'
 import { startCase, upperCase, replace } from 'lodash'
+import classNames from 'classnames'
 
-const DefaultWrapper: FC = (props) => <div {...props} />
+const DefaultWrapper: FC = (props) => <span {...props} />
 type IconObject = { prefix: string; iconName: string }
 type IconProps<W> = {
   wrapper: ComponentType<W>
@@ -19,11 +20,12 @@ export function makeIcon<T extends any>(icon: FontAwesomeIconProps['icon']) {
   const Icon: FC<IconProps<T>> = ({
     wrapper: Wrapper = DefaultWrapper,
     iconProps,
+    className,
     ...rest
   }) => {
     const props = rest as T
     return (
-      <Wrapper {...props}>
+      <Wrapper {...props} className={classNames(className, 'fa-icon')}>
         <FontAwesomeIcon icon={icon} {...iconProps} />
       </Wrapper>
     )
